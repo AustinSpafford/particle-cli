@@ -304,7 +304,7 @@ CloudCommand.prototype = extend(BaseCommand.prototype, {
 
 
 		var binary_url = '/v1/binaries/' + binary_id;
-		var allDone = api.downloadBinary(binary_url, filename);
+		var allDone = api.downloadBinaryToFile(binary_url, filename);
 
 		when(allDone).then(
 			function () {
@@ -409,7 +409,7 @@ CloudCommand.prototype = extend(BaseCommand.prototype, {
 				}
 
 				if (resp && resp.binary_url) {
-					return api.downloadBinary(resp.binary_url, filename);
+					return api.downloadBinaryToFile(resp.binary_url, filename);
 				} else {
 					return when.reject(resp.errors);
 				}
